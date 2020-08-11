@@ -1,4 +1,4 @@
 vendor
-var/logs/*
-var/data/*
-*.log
+# var/logs/*
+# var/data/*
+# *.log
