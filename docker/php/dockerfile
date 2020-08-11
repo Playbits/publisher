@@ -1,0 +1,13 @@
+FROM php:7.3-fpm-alpine
+
+RUN apk update --no-cache \
+  && apk add --no-cache $PHPIZE_DEPS \
+  && apk add --no-cache mysql-dev \
+  && apk add --no-cache zlib-dev libzip-dev \ 
+  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-install pdo pdo_mysql bcmath zip\
+  && pecl install xdebug \
+  && docker-php-ext-enable xdebug
+
+# Set up the working directory
+WORKDIR /var/www/publisher
