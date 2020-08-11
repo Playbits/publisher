@@ -40,8 +40,6 @@ class PublisherController extends Controller {
         $payload = array_merge($params, $topic_file);
         $output = [];
         // $postEventData = $this->postEventData($payload);
-        // var_dump($postEventData);
-        // exit();
         return $this->responseWithJson($response, $payload);
     }
 
@@ -58,18 +56,12 @@ class PublisherController extends Controller {
 
     private function postEventData($data) {
         $url = $data['url'];
-        $client = new Client([
-            'base_uri' => "http://localhost:8000",
-            // 'defaults' => [
-            //     'exceptions' => false,
-            // ],
-        ]);
+        $client = new Client();
         unset($data['url']);
-        $API_response = $client->request('POST', '/event', [
+        $API_response = $client->request('POST', $url, [
             'json' => $data,
         ]);
-        return $API_response;
-        // $responseData = json_decode($API_response->getBody()->getContents(), true);
-        // return $responseData;
+        $responseData = json_decode($API_response->getBody()->getContents(), true);
+        return $responseData;
     }
 }
