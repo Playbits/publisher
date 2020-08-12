@@ -12,7 +12,6 @@ class Controller {
     protected $container;
     protected $validator;
     protected $app;
-    protected $secret;
 
     function __construct() {
         $app = App::create();
