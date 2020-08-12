@@ -1,6 +1,16 @@
 ## The Publisher App
 base_url : http://localhost:800
 
+Requirements
+---
+* PHP@7.3
+* Composer 
+* Docker and Docker-composer (optional)
+
+Installation
+```
+$ composer install
+```
 Deployment with Docker
 
 ```
